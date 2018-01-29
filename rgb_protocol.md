@@ -1,5 +1,5 @@
 # 512 color RGB protocol *(as I understand it)*
-*need to fix english and grammer in this at some point*  
+*TODO: need to fix english in this at some point, but probably never will*  
 
 The keyboard colours are set by 5 usb control messages.  
 the first 4 contain the colour data and the 5th causes the keyboard to actually display the recived colours
@@ -9,11 +9,11 @@ for the first 4 packets
 typedef unsigned char u8;
 
 struct colour_packet {
-	u8 id;
-	u8 packet_num;
-	u8 data_len;
-	u8 pad;
-	u8 data[60];
+	uint8_t id;
+	uint8_t packet_num;
+	uint8_t data_len;
+	uint8_t pad;
+	uint8_t data[60];
 };
 ```
 the id is always 0x7F, assuming this means it is a colour data packet  
@@ -26,11 +26,11 @@ data contains the actual colour data split among the 4 packets (explained lower)
 for the 5th packet I'm not sure of the exact value meanings but it causes the update
 ```
 struct end_packet {
-	u8 id;
-	u8 something;
-	u8 pad[2];
-	u8 command_maybe;
-	u8 pad2[59];
+	uint8_t id;
+	uint8_t something;
+	uint8_t pad[2];
+	uint8_t command_maybe;
+	uint8_t pad2[59];
 };
 ```
 id = 0x07;
@@ -41,7 +41,7 @@ pad2 = { 0 }; pad to the full 64 bytes for the packet;
 
 colour data
 ```
-u8 colour_data[3][72];
+uint8_t colour_data[3][72];
 ```
 the colour data is made up of three 72 byte frames for the brightness levels of each colour  
 with colour_data[0] being the red values  
@@ -57,4 +57,4 @@ this allows for 512 possible colours, across 144 keys
 
 # 16.7M color RGB protocol.
 
-looking at the windows software in a VM and my own packet captures it does seem they have updated to be able to enable an actual 16m color mode with a different RGB protocol  
+looking at the windows software in a VM and my own packet captures it does seem they have updated to be able to enable an actual 16m color mode with a different RGB protocol, I am currently ignoring this though.  
