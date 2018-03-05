@@ -2,6 +2,8 @@
 ## Corsair keyboard Color Changer
 *probably broken and certainly badly written*
 
+### Replaced my keyboard and no longer have a corsair so archiving this repository.
+
 had a Corsair K95 for a while that I picked up on sale and decided that I was tired of the boring white backlight you get without the windows software  
 It probably won't crash your system or make anything explode but I wouldn't trust me  
 especially as it is intended to be run as root.
