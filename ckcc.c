@@ -50,7 +50,13 @@ int parse_file(char *file);
  * systems. */
 #define BINTERFACENUMBER 0x02
 
-static char version[] = "0.0.1";
+#ifndef BUILD_META
+#define BUILD_META
+#endif /* BUILD_META */
+#define VERSION_STRING "0.0.1" BUILD_META
+/* Versioning follows Semantic Versioning 2.0.0 [https://semver.org] */
+
+static char const version[] = VERSION_STRING;
 
 struct rgb {
     uint8_t r[144];
